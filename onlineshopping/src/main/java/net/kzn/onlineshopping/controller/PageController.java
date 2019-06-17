@@ -5,13 +5,13 @@ import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
-import net.kzn.shoppingbackend.dao.CategoryDAO;
+import net.kzn.shoppingbackend.dao.AvailabilitySearchDAO;
 
 @Controller
 public class PageController {
 
 	@Autowired
-	private CategoryDAO categoryDAO;
+	private AvailabilitySearchDAO availabilitySearchDAO;
 
 	@RequestMapping(value = { "/", "/home", "/index" })
 
@@ -20,7 +20,7 @@ public class PageController {
 		mv.addObject("title", "Home");
 		
 		//passing the list of categories
-		mv.addObject("categories", categoryDAO.list());
+		mv.addObject("categories", availabilitySearchDAO.list());
 		mv.addObject("userClickHome", true);
 		return mv;
 	}
